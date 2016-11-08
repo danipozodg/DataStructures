@@ -71,7 +71,7 @@ union b b' = fold insert b b'
 -- Returns intersection of two bags (takes into account repetitions: repetitions in result is
 -- minimum of repetitions in original bags)
 intersection :: (Ord a) => Bag a -> Bag a -> Bag a
-intersection s s' = fold (\x inter -> if isElem x s then insert x inter else inter) empty s'
+intersection s s' = foldOcc (\x n inter -> if isElem x s then union (repeatNtimes x n) inter else inter) empty s'
 
 -- Returns difference of two bags (takes into account repetitions: repetitions in result is
 -- difference of repetitions in original bags)
@@ -83,6 +83,12 @@ difference b b' = fold delete b b'
 -------------------------------------------------------------------------------
 -- Remaining code is already implemented:
 -------------------------------------------------------------------------------
+
+-- Auxiliary functions
+
+repeatNtimes :: a -> Int -> Bag a
+repeatNtimes x n = Node x n Empty
+-- repeatNtimes x n = take n $ repeat x
 
 fold :: (a -> b -> b) -> b -> Bag a -> b
 fold f z  = fun

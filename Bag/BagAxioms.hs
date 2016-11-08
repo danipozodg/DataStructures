@@ -11,10 +11,10 @@ module DataStructures.Bag.BagAxioms( ax1,ax2,ax3,ax4,ax5,ax6,ax7,ax8,ax9,ax10,ba
 
 import DataStructures.Bag.SortedLinearBag
 import Test.QuickCheck
-import qualified DataStructures.Util.TestDatatype as TDT
+-- import qualified DataStructures.Util.TestDatatype as TDT
 
--- type Elem = Char -- Test axioms using bags of Ints
-type Elem = TDT.Elem -- Test axioms using an enumerated datatype
+type Elem = Int -- Test axioms using bags of Ints
+-- type Elem = TDT.Elem -- Test axioms using an enumerated datatype
 
 ax1     = True ==> isEmpty empty
 ax2 x b = True ==> not (isEmpty (insert x b))
@@ -62,7 +62,7 @@ extBagAxioms = do
   --quickCheck ( ax11 :: Bag Elem -> Property)
   --quickCheck ( ax12 :: Elem -> Bag Elem -> Bag Elem -> Property)
   --quickCheck ( ax13 :: Bag Elem -> Property)
-  --quickCheck ( ax14 :: Elem -> Bag Elem -> Bag Elem -> Property)
+  -- quickCheck ( ax14 :: Elem -> Bag Elem -> Bag Elem -> Property)
   quickCheck ( ax15 :: Elem -> Bag Elem -> Bag Elem -> Property)
   --quickCheck ( ax16 :: Bag Elem -> Property)
   --quickCheck ( ax17 :: Elem -> Bag Elem -> Bag Elem -> Property)
